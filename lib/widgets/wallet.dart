@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 
+var currencyInfo = [
+  {
+    'code': 'EUR',
+    'curIcon': Icons.euro_rounded,
+    'currency': 'Euro',
+  },
+  {
+    'code': 'USD',
+    'curIcon': Icons.attach_money_outlined,
+    'currency': 'Dollar',
+  },
+  {
+    'code': 'BTC',
+    'curIcon': Icons.currency_bitcoin_outlined,
+    'currency': 'Bitcoin',
+  },
+];
+
 typedef WalletData = ({
-  String text1,
+  String code,
   String amount,
-  String text3,
-  IconData curIcon,
-  bool isInverted
 });
 
 class WalletBox extends StatelessWidget {
@@ -16,20 +31,23 @@ class WalletBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double index = 0;
+    bool toggleInvert = true;
     return Column(
       children: [
         ...walletDatas.map((element) {
-          // int idx = element.hashCode;
           double offsetY = -20 * index++;
-          // double offsetY = -20;
+          Map result =
+              currencyInfo.singleWhere((w) => w['code'] == element.code);
+          IconData curIcon = result['curIcon'];
+          String currency = result['currency'];
           return Transform.translate(
             offset: Offset(0, offsetY),
             child: Wallet(
-              text1: element.text1,
+              text1: currency,
               amount: element.amount,
-              text3: element.text3,
-              curIcon: element.curIcon,
-              isInverted: element.isInverted,
+              text3: element.code,
+              curIcon: curIcon,
+              isInverted: toggleInvert = !toggleInvert,
             ),
           );
         })

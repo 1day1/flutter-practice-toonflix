@@ -114,54 +114,18 @@ class MyApp extends StatelessWidget {
                   ),
                   const WalletBox(walletDatas: [
                     (
-                      text1: 'Euro',
+                      code: 'EUR',
                       amount: '6 234',
-                      text3: 'EUR',
-                      curIcon: Icons.euro_rounded,
-                      isInverted: false,
                     ),
                     (
-                      text1: 'Dollar',
+                      code: 'USD',
                       amount: '55 124',
-                      text3: 'USD',
-                      curIcon: Icons.attach_money_outlined,
-                      isInverted: true,
                     ),
                     (
-                      text1: 'Bitcoin',
+                      code: 'BTC',
                       amount: '1.2894',
-                      text3: 'BTC',
-                      curIcon: Icons.currency_bitcoin_outlined,
-                      isInverted: false,
                     )
                   ]),
-                  /* const Wallet(
-                    text1: 'Euro',
-                    amount: '6 234',
-                    text3: 'EUR',
-                    curIcon: Icons.euro_rounded,
-                    isInverted: false,
-                  ),
-                  Transform.translate(
-                    offset: const Offset(0, -20),
-                    child: const Wallet(
-                      text1: 'Dollar',
-                      amount: '55 124',
-                      text3: 'USD',
-                      curIcon: Icons.attach_money_outlined,
-                      isInverted: true,
-                    ),
-                  ),
-                  Transform.translate(
-                    offset: const Offset(0, -40),
-                    child: const Wallet(
-                      text1: 'Bitcoin',
-                      amount: '1.2894',
-                      text3: 'BTC',
-                      curIcon: Icons.currency_bitcoin_outlined,
-                      isInverted: false,
-                    ),
-                  ), */
                 ],
               ),
             ),
