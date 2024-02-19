@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/wallet.dart';
 
@@ -6,8 +9,34 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late List<WalletData> walletDatas = [];
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/balances.json');
+    final data = await jsonDecode(response);
+    setState(() {
+      for (var bal in data['balances']) {
+        walletDatas.add((
+          code: bal['code'],
+          amount: bal['amount'],
+        ));
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    readJson();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,20 +141,7 @@ class MyApp extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const WalletBox(walletDatas: [
-                    (
-                      code: 'EUR',
-                      amount: '6 234',
-                    ),
-                    (
-                      code: 'USD',
-                      amount: '55 124',
-                    ),
-                    (
-                      code: 'BTC',
-                      amount: '1.2894',
-                    )
-                  ]),
+                  WalletBox(walletDatas: walletDatas),
                 ],
               ),
             ),

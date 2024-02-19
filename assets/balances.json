@@ -1,0 +1,16 @@
+{
+    "balances" : [
+        {
+            "code": "EUR",
+            "amount": "6 234"
+        },
+        {
+            "code": "BTC",
+            "amount": "1.2894"
+        },
+        {
+            "code": "USD",
+            "amount": "55 124"
+        }
+    ]
+}
